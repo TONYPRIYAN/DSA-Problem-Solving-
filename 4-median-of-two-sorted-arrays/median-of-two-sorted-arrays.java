@@ -4,33 +4,69 @@ class Solution {
         int m = nums1.length;
         int n = nums2.length;
 
-        int[] arr = new int[m+n];
+        int tot = m+n;
 
-        System.arraycopy(nums1,0,arr,0,m);
-        System.arraycopy(nums2,0,arr,m,n);
+        int mi = tot / 2;
+        int ni = mi - 1;
 
-        Arrays.sort(arr);
+        
 
+        int me = -1;
+        int ne = -1;
 
-        if((m+n) % 2 == 0)
+        int cnt = 0;
+
+        int i = 0;
+        int j = 0;
+
+        while(i < m && j < n)
         {
-            int n1 = arr.length/2;
-            int n2 = (arr.length/2) - 1;
+            if(nums1[i] < nums2[j])
+            {
+                if(cnt == mi) me = nums1[i];
+                if(cnt == ni) ne = nums1[i];
+                i++;
+                cnt++;
+            }
+            else
+            {
+                if(cnt == mi) me = nums2[j];
+                if(cnt == ni) ne = nums2[j];
+                j++;
+                cnt++;
+
+            }
 
 
-            return (float)(arr[n1]+arr[n2])/2;
+        }
 
+        while(i < m)
+        {
+             if(cnt == mi) me = nums1[i];
+                if(cnt == ni) ne = nums1[i];
+                i++;
+                cnt++;
 
+        }
 
+        while(j < n)
+        {
+            if(cnt == mi) me = nums2[j];
+                if(cnt == ni) ne = nums2[j];
+                j++;
+                cnt++;
+
+        }
+
+        if(tot % 2 == 1)
+        {
+            return (double)me;
         }
         else
         {
-            int low = 0;
-            int high = arr.length-1;
-            int mid = low + (high-low)/2;
-
-            return arr[mid];
-
+            return (double)((double)(me + ne)) / 2.0;
         }
+
+
     }
 }
