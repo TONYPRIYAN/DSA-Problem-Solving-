@@ -14,14 +14,11 @@ class Solution {
 
         if((m+n) % 2 == 0)
         {
-            float low = 0;
-            float high = arr.length-1;
-            float mid = low + (high-low)/2;
+            int n1 = arr.length/2;
+            int n2 = (arr.length/2) - 1;
 
-            double n1 = Math.floor(mid);
-            double n2 = Math.ceil(mid);
 
-            return (float)(arr[(int)n1]+arr[(int)n2])/2;
+            return (float)(arr[n1]+arr[n2])/2;
 
 
 
