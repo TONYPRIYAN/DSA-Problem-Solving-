@@ -3,13 +3,13 @@ class Solution {
     {
         String[] arr = s.trim().split("\\s+");
 
-        String s2 = "";
+        StringBuilder s2 = new StringBuilder();
         for(int i=arr.length-1;i>=0;i--)
         {
-            s2+=arr[i]+" ";
+            s2.append(arr[i]+" ");
         }
 
-        return s2.trim();
+        return s2.toString().trim();
         
     }
 }
