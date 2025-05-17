@@ -14,7 +14,20 @@ class Solution
 
        }
 
-       return s2.toString().equals(s2.reverse().toString());
+       int l = 0;
+       int r = s2.length()-1;
+
+       while(l<=r)
+       {
+        if(s2.charAt(l) != s2.charAt(r))
+        {
+            return false;
+        }
+        l++;
+        r--;
+       }
+
+       return true;
         
         
     }
