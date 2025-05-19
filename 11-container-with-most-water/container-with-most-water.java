@@ -4,13 +4,13 @@ class Solution {
         int l = 0;
         int r =arr.length-1;
         int res = 0;
-        int area = 0;
+        
 
 
-        while(l<=r)
+        while(l<r)
         {
-            area = (r-l)*Math.min(arr[l],arr[r]);
-            res = Math.max(res,area);
+            
+            res = Math.max(res,(r-l)*Math.min(arr[l],arr[r]));
 
             if(arr[l] < arr[r]) l++;
             else r--;
