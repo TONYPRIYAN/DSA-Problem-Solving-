@@ -1,2 +1,2 @@
-# DSA-Problem-Solving-
+# DSA-Problem-Solving
 Problems solved in LeetCode
