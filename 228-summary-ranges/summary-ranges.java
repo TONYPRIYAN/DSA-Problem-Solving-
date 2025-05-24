@@ -5,29 +5,29 @@ class Solution {
        
        if(nums.length == 0) return arr;
 
-       int start  = nums[0];
+       int start  = 0;
+       int end = 0;
 
-       for(int i=1;i<=nums.length;i++)
+       for(int i=0;i<nums.length;i++)
        {
-        if(i == nums.length || nums[i] != nums[i-1]+1)
+
+        while(i < nums.length-1 && nums[i]+1 == nums[i+1])
         {
-            if(nums[i-1] == start)
-            {
-                arr.add(String.valueOf(start));
-            }
-            else
-            {
-                arr.add(start+"->"+nums[i-1]);
-            }
-        if(i<nums.length)
-       {
-        start = nums[i];
-       }
+            end++;
+            i++;
+        }
+
+        if(start == end) arr.add(String.valueOf(nums[start]));
+        else arr.add(nums[start]+"->"+nums[end]);
+
+        end++;
+        start = end;
+
        }
 
-       
- 
-    }
+      
+
+    
 
     return arr;
 }
