@@ -1,8 +1,9 @@
-# Write your MySQL query statement below
+/* Write your PL/SQL query statement below */
 
-select e2.name
-from Employee e1
-join Employee e2
-on e1.managerId = e2.id
-group by e1.managerId
-having count(e2.id) >= 5
+SELECT e2.name
+FROM Employee e1
+JOIN Employee e2
+  ON e1.managerId = e2.id
+GROUP BY e2.id, e2.name
+HAVING COUNT(*) >= 5;
+
