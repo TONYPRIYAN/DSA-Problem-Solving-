@@ -30,7 +30,6 @@ class Solution {
         }
 
         ListNode s = head;
-
         while(f.next != null)
         {
             s = s.next;
@@ -40,6 +39,5 @@ class Solution {
         s.next = s.next.next;
 
         return head;
-        
     }
 }
