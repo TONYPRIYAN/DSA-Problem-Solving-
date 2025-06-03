@@ -25,9 +25,9 @@ public TreeNode traverse(TreeNode root) {
     TreeNode rightLast = traverse(root.right);
 
     if (root.left != null) {
-        //if (leftLast != null) {
+        
             leftLast.right = root.right;
-        //}
+        
         root.right = root.left;
         root.left = null;
     }
