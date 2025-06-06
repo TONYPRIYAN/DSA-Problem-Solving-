@@ -19,7 +19,7 @@ class Solution {
     public int kthSmallest(TreeNode root, int k)
     {
         inorder(root);
-        Collections.sort(arr);
+        
        
         return arr.get(k-1);
         
