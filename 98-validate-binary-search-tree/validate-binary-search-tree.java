@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    Stack<Integer> st = new Stack<>();
+    Integer prev = null;
     boolean flag = true;
     public boolean isValidBST(TreeNode root) 
     {
@@ -26,14 +26,14 @@ class Solution {
     {
         if(root == null) return;
         traverse(root.left);
-        if(st.isEmpty()) st.push(root.val);
-        else if(st.peek() >= root.val){
+        if(prev == null) prev = root.val;
+        else if(prev >= root.val){
             flag = false;
             return;
         }
         else
         {
-            st.push(root.val);
+            prev = root.val;
         }
         traverse(root.right);
 
