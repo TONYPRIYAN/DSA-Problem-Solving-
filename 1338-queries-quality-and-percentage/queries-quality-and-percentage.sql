@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+/* Write your PL/SQL query statement below */
 
 select query_name,
 round(avg(rating/position),2) as quality,
