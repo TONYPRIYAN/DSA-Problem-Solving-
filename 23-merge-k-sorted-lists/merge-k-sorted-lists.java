@@ -16,29 +16,27 @@ class Solution {
         for(ListNode head : lists)
         {
             if(head != null)
-            {
-                pq.add(head);
-            }
+            pq.add(head);
         }
 
-        ListNode dummy = new ListNode(-1);
-        ListNode tail = dummy;
 
+        ListNode dummy = new ListNode(-1);
+        ListNode tmp = dummy;
 
         while(!pq.isEmpty())
         {
             ListNode top = pq.poll();
-
-            tail.next = top;
-            tail = top;
+            tmp.next = top;
+            tmp = top;
 
             if(top.next != null)
             {
                 pq.add(top.next);
             }
+
         }
 
         return dummy.next;
-        
     }
+
 }
