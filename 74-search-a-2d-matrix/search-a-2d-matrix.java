@@ -8,10 +8,23 @@ class Solution {
     {
         for(int[] arr : matrix)
         {
-            for(int x : arr)
+           int l = 0;
+           int r = arr.length-1;
+
+           while(l <= r)
+           {
+            int mid = l + (r-l)/2;
+            if(arr[mid] == target) return true;
+
+            if(arr[mid] > target)
             {
-                if(x == target) return true;
+                r = mid-1;
             }
+            else
+            {
+                l = mid+1;
+            }
+           }
         }
         return false;
     }
