@@ -1,72 +1,29 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) 
     {
-        int m = nums1.length;
-        int n = nums2.length;
+        ArrayList<Integer> nums = new ArrayList<>();
 
-        int tot = m+n;
-
-        int mi = tot / 2;
-        int ni = mi - 1;
-
-        
-
-        int me = -1;
-        int ne = -1;
-
-        int cnt = 0;
-
-        int i = 0;
-        int j = 0;
-
-        while(i < m && j < n)
+        for(int x : nums1)
         {
-            if(nums1[i] < nums2[j])
-            {
-                if(cnt == mi) me = nums1[i];
-                if(cnt == ni) ne = nums1[i];
-                i++;
-                cnt++;
-            }
-            else
-            {
-                if(cnt == mi) me = nums2[j];
-                if(cnt == ni) ne = nums2[j];
-                j++;
-                cnt++;
-
-            }
-
-
+            nums.add(x);
         }
 
-        while(i < m)
+        for(int x : nums2)
         {
-             if(cnt == mi) me = nums1[i];
-                if(cnt == ni) ne = nums1[i];
-                i++;
-                cnt++;
-
+            nums.add(x);
         }
 
-        while(j < n)
-        {
-            if(cnt == mi) me = nums2[j];
-                if(cnt == ni) ne = nums2[j];
-                j++;
-                cnt++;
+        Collections.sort(nums);
+        int mid = (nums.size()-1)/2;
 
-        }
-
-        if(tot % 2 == 1)
+        if(nums.size() %2 == 0)
         {
-            return (double)me;
+            return (double) (nums.get(mid)+nums.get(mid+1))/2;
         }
         else
         {
-            return (double)((double)(me + ne)) / 2.0;
+            return (double) nums.get(mid);
         }
-
-
+        
     }
 }
