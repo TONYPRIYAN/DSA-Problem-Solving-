@@ -7,7 +7,7 @@ class Solution {
 
         StringBuilder res = new StringBuilder();
 
-        while(i >=0 || j >= 0 || carry >0)
+        while(i >=0 || j >= 0 || carry > 0)
         {
             int n1 = (i >= 0) ? a.charAt(i--) - '0' : 0;
             int n2 = (j >= 0) ? b.charAt(j--) - '0' : 0;
