@@ -4,9 +4,9 @@ class Solution {
         int val = 0;
         for(int x : nums)
         {
-            val  = val ^x;
+            val ^= x;
         }
         return val;
-
+        
     }
 }
