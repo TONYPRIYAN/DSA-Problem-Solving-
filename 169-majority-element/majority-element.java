@@ -1,7 +1,6 @@
 class Solution {
     public int majorityElement(int[] nums) 
     {
-        
         HashMap<Integer,Integer> map = new HashMap<>();
 
         for(int x : nums)
@@ -9,19 +8,19 @@ class Solution {
             map.put(x,map.getOrDefault(x,0)+1);
         }
 
-        int n = (nums.length)/2;
-        int c = 0;
+        int max = 0;
+        int num = 0;
 
-        for(int x : map.keySet())
+        for(int k : map.keySet())
         {
-            if(map.get(x) > n)
+            if(map.get(k) > max)
             {
-                c = x;
+                num = k;
+                max = map.get(k);
             }
         }
-
-        return c;
-
+        
+        return num;
         
     }
 }
