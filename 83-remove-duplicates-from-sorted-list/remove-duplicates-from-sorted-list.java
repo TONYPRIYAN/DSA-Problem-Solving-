@@ -12,7 +12,7 @@ class Solution {
     public ListNode deleteDuplicates(ListNode head) 
     {
 
-        int num = 0;
+       
         ListNode tmp = head;
        
 
