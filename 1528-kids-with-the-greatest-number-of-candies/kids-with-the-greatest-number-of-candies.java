@@ -4,22 +4,12 @@ class Solution {
         List<Boolean> arr = new ArrayList<>();
 
 
-        int max = Integer.MIN_VALUE;
-        for(int x : candies)
-        {
-            max = Math.max(max,x);
-        }
+        int max = Arrays.stream(candies).max().getAsInt();
 
         for(int x : candies)
         {
-            if((extraCandies + x) >= max)
-            {
-                arr.add(true);
-            }
-            else
-            {
-                arr.add(false);
-            }
+            arr.add((extraCandies + x) >= max);
+           
         }
 
         return arr;
