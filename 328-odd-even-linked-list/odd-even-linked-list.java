@@ -9,34 +9,37 @@
  * }
  */
 class Solution {
-    public ListNode oddEvenList(ListNode head)
+    public ListNode oddEvenList(ListNode head) 
     {
+        ListNode odd = new ListNode(-1);
+        ListNode oddhead = odd;
 
-        if(head == null || head.next == null)
+        ListNode even = new ListNode(-1);
+        ListNode evenhead = even;
+
+        ListNode tmp = head;
+        int i=1;
+
+        while(tmp != null)
         {
-            return head;
-        }
-      
-        ListNode odd = head;
-        ListNode even = head.next;
-        ListNode evenhead = head.next;
+            if(i %2 == 1)
+            {
+                odd.next = tmp;
+                odd = tmp;
+            }
+            else
+            {
+                even.next = tmp;
+                even = tmp;
+            }
+            tmp = tmp.next;
+            i++;
 
-
-
-        while(even != null && even.next != null)
-        {
-            odd.next = odd.next.next;
-            even.next = even.next.next;
-
-            odd = odd.next;
-            even = even.next;
         }
 
-        odd.next = evenhead;
-
-        
-
-        return head;
+        odd.next = evenhead.next;
+        even.next = null;
+        return oddhead.next;
         
     }
 }
