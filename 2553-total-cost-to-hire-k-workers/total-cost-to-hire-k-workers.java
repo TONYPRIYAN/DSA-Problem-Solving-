@@ -1,23 +1,30 @@
 class Solution {
     public long totalCost(int[] costs, int k, int candidates) {
-        int left = 0, right = costs.length - 1;
+         int i = 0;
+        int j = costs.length - 1;
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
 
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b) -> (costs[a] - costs[b] != 0 ? costs[a] - costs[b] : a - b));
-        for (int i = 0; i < candidates && left <= right; i++) {
-            priorityQueue.add(left++);
-            if (left <= right) priorityQueue.add(right--);
-        }
-
-        long res = 0;
-        while (k > 0) {
-            int idx = priorityQueue.poll();
-            if (left <= right && left < costs.length && right >= 0) {
-                if (idx <= left) priorityQueue.add(left++);
-                else priorityQueue.add(right--);
+        long ans = 0;
+        while (k-- > 0) {
+            while (pq1.size() < candidates && i <= j) {
+                pq1.offer(costs[i++]);
             }
-            res += costs[idx];
-            k--;
+            while (pq2.size() < candidates && i <= j) {
+                pq2.offer(costs[j--]);
+            }
+
+            int t1 = pq1.size() > 0 ? pq1.peek() : Integer.MAX_VALUE;
+            int t2 = pq2.size() > 0 ? pq2.peek() : Integer.MAX_VALUE;
+
+            if (t1 <= t2) {
+                ans += t1;
+                pq1.poll();
+            } else {
+                ans += t2;
+                pq2.poll();
+            }
         }
-        return res;
+        return ans;
     }
 }
