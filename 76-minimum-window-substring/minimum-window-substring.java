@@ -2,48 +2,46 @@ class Solution {
     public String minWindow(String s, String t) 
     {
 
-        if (s == null || t == null || s.length() < t.length()) {
-        return "";
-    }
-        final Map<Character, Integer> required = new HashMap<>();
-        for (char word : t.toCharArray()) {
-            required.put(word, required.getOrDefault(word, 0) + 1);
+        if(s.length() < t.length() || s == null ||  t == null  || s.length() == 0 || t.length() == 0)
+        return new String();
+
+        int[] map = new int[128];
+        int count = t.length();
+        for(char c : t.toCharArray())
+        {
+            map[c]++;
         }
+
+        int l = 0;
+        int r= 0;
+        int minlen = Integer.MAX_VALUE;
+        int start = 0;
+        char[] arr = s.toCharArray();
+
+        while(r < arr.length)
+        {
+            if(map[arr[r++]]-- > 0)
+            {
+                count--;
+            }
         
 
-    Map<Character, Integer> windowCounts = new HashMap<>();
-    int have = 0, need = required.size();
-    int left = 0, right = 0;
-    int minLen = Integer.MAX_VALUE;
-    int minStart = 0;
-
-    while (right < s.length()) {
-        char c = s.charAt(right);
-        windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);
-
-        if (required.containsKey(c) && windowCounts.get(c).intValue() == required.get(c).intValue()) {
-            have++;
+        while(count == 0)
+        {
+            if(r - l < minlen)
+            {
+                start = l;
+                minlen = r-l;
+            }
+            if(map[arr[l++]]++ == 0)
+            {
+                count++;
+            }
+        }
         }
 
-        // Try to shrink the window from the left
-        while (have == need) {
-            if (right - left + 1 < minLen) {
-                minLen = right - left + 1;
-                minStart = left;
-            }
+        return minlen == Integer.MAX_VALUE ? new String() : new String(arr,start,minlen);
 
-            char leftChar = s.charAt(left);
-            windowCounts.put(leftChar, windowCounts.get(leftChar) - 1);
-            if (required.containsKey(leftChar) && windowCounts.get(leftChar).intValue() < required.get(leftChar).intValue()) {
-                have--;
-            }
-            left++;
-        }
-
-        right++;
-    }
-
-    return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
         
     }
 }
