@@ -16,12 +16,11 @@ class Solution {
         for(ListNode head : lists)
         {
             if(head != null)
-            pq.add(head);
+                pq.add(head);
         }
 
-
-        ListNode dummy = new ListNode(-1);
-        ListNode tmp = dummy;
+        ListNode list2 = new ListNode(0);
+        ListNode tmp = list2;
 
         while(!pq.isEmpty())
         {
@@ -33,10 +32,9 @@ class Solution {
             {
                 pq.add(top.next);
             }
-
         }
 
-        return dummy.next;
+        return list2.next;
+        
     }
-
 }
