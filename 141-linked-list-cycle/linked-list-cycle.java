@@ -12,6 +12,7 @@
 public class Solution {
     public boolean hasCycle(ListNode head) 
     {
+      
 
         ListNode f = head;
         ListNode s = head;
@@ -21,14 +22,11 @@ public class Solution {
             s = s.next;
             f = f.next.next;
 
-            if(f == s)
-            {
+            if(s == f)
                 return true;
-            }
         }
 
         return false;
-
         
     }
 }
