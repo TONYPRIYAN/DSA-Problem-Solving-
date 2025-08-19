@@ -11,61 +11,65 @@
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) 
     {
-     if(list1 == null && list2 == null)
-     {
-        return null;
-     }
-     if(list1 == null && list2 != null)
-     {
-        return list2;
-     }
-     if(list1 != null && list2 == null)
-     {
-        return list1;
-     }
-
-     ListNode list3 = new ListNode(0);
-     ListNode listhead = list3;
-
-     ListNode tmp1 = list1;
-     ListNode tmp2 = list2;
-
-     while(tmp1 != null && tmp2 != null)
-     {
-        if(tmp1.val <= tmp2.val)
+        if(list1 == null && list2 == null)
         {
-            ListNode newnode = new ListNode(tmp1.val);
-            list3.next = newnode;
-            list3 = newnode;
-            tmp1 = tmp1.next;
+            return null;
         }
-        else
+        if(list1 == null && list2 != null)
         {
-            ListNode newnode = new ListNode(tmp2.val);
-            list3.next = newnode;
-            list3 = newnode;
-            tmp2 = tmp2.next;
+            return list2;
+        }
+        if(list1 != null && list2 == null)
+        {
+            return list1;
+        }
+
+        ListNode list3 = new ListNode(0);
+        ListNode newhead = list3;
+        
+
+        ListNode tmp1 = list1;
+        ListNode tmp2  = list2;
+
+
+        while(tmp1 != null && tmp2 != null)
+        {
+            if(tmp1.val <= tmp2.val)
+            {
+                ListNode newnode = new ListNode(tmp1.val);
+                list3.next = newnode;
+                list3 = newnode;
+                tmp1 = tmp1.next;
+            }
+            else
+            {
+                ListNode newnode = new ListNode(tmp2.val);
+                list3.next = newnode;
+                list3 = newnode;
+                tmp2 = tmp2.next;
+
+            }
+        }
+
+        while(tmp1 != null)
+        {
+                ListNode newnode = new ListNode(tmp1.val);
+                list3.next = newnode;
+                list3 = newnode;
+                tmp1 = tmp1.next;
 
         }
-     }
 
-     while(tmp1 != null)
-     {
-            ListNode newnode = new ListNode(tmp1.val);
-            list3.next = newnode;
-            list3 = newnode;
-            tmp1 = tmp1.next;
-     }
+         while(tmp2 != null)
+        {
+                ListNode newnode = new ListNode(tmp2.val);
+                list3.next = newnode;
+                list3 = newnode;
+                tmp2 = tmp2.next;
 
-     while(tmp2 != null)
-     {
-            ListNode newnode = new ListNode(tmp2.val);
-            list3.next = newnode;
-            list3 = newnode;
-            tmp2 = tmp2.next;
-     }
+        }
 
-     return listhead.next;
-
+        return newhead.next;
+        
     }
 }
