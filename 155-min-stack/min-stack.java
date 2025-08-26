@@ -4,15 +4,13 @@ Stack<Long> st = new Stack<>();
 Long min;
     public MinStack() 
     {
-    min = Long.MAX_VALUE;
-        
+        min = Long.MAX_VALUE;
     }
-
-    
     
     public void push(int value) 
     {
         Long val = Long.valueOf(value);
+
         if(st.isEmpty())
         {
             min = val;
@@ -35,13 +33,13 @@ Long min;
     
     public void pop() 
     {
-       if(st.isEmpty()) return;
+        if(st.isEmpty()) return;
 
-       Long val = st.pop();
-       if(val < min)
-       {
-        min = 2*min - val;
-       }
+        Long val = st.pop();
+        if(val < min)
+        {
+            min = 2*min - val;
+        }
         
     }
     
