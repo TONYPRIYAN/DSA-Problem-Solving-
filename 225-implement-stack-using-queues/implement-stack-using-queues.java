@@ -1,11 +1,10 @@
 class MyStack {
 
-Queue<Integer> q = new LinkedList<>();
+    Queue<Integer> q;
+
     public MyStack() 
     {
-        
-        
-
+        q = new LinkedList<>();
         
     }
     
@@ -19,20 +18,18 @@ Queue<Integer> q = new LinkedList<>();
         
     }
     
-    public int pop() {
+    public int pop() 
+    {
         return q.remove();
         
     }
     
     public int top() {
-        return q.peek();
-        
+       return q.peek();
     }
     
-    public boolean empty() 
-    {
+    public boolean empty() {
         return q.isEmpty();
-        
     }
 }
 
