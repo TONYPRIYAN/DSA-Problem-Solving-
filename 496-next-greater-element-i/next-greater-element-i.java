@@ -6,6 +6,7 @@ class Solution {
         Stack<Integer> st = new Stack<>();
         HashMap<Integer,Integer> map = new HashMap<>();
 
+
         for(int num : nums2)
         {
             while(!st.isEmpty() && num > st.peek())
@@ -20,7 +21,8 @@ class Solution {
         {
             ans[i++] = map.getOrDefault(num,-1);
         }
-        
+
         return ans;
+        
     }
 }
