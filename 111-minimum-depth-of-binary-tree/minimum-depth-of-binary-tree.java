@@ -16,16 +16,15 @@
 class Solution {
     public int minDepth(TreeNode root) 
     {
-        return traverse(root);
+        if(root == null)
+        {
+            return 0;
+        }
+
+        int left = minDepth(root.left);
+        int right = minDepth(root.right);
+
+        return (right == 0 || left == 0) ? right+left+1 : Math.min(left,right)+1;
         
-    }
-
-    public int traverse(TreeNode node)
-    {
-        if(node == null) return 0;
-        int left = traverse(node.left);
-        int right = traverse(node.right);
-
-        return (left == 0 || right == 0) ? left + right + 1 : Math.min(left,right) + 1;
     }
 }
