@@ -17,17 +17,20 @@ class Solution {
     public int maxDepth(TreeNode root) 
     {
 
-       
         return traverse(root);
         
     }
 
     public int traverse(TreeNode root)
     {
-        if(root == null) return 0;
+        if(root == null)
+        {
+            return 0;
+        }
+
         int left = traverse(root.left);
         int right = traverse(root.right);
 
-        return 1 + Math.max(left,right);
+        return 1 + Math.max(right,left);
     }
 }
