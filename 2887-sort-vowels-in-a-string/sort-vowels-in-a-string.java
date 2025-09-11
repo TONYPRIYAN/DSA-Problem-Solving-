@@ -13,22 +13,22 @@ class Solution {
             }
         }
         Collections.sort(arr);
-        String t = "";
+        StringBuilder t = new StringBuilder();
         int i=0;
         for(char c : s.toCharArray())
         {
             if(vow.indexOf(c) != -1)
             {
-                t += arr.get(i++);
+                t.append(arr.get(i++));
             }
             else
             {
-                t += c;
+               t.append(c);
             }
         }
 
         System.out.println(t);
-        return t;
+        return t.toString();
         
     }
 }
