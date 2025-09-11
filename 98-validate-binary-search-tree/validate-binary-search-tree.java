@@ -14,29 +14,28 @@
  * }
  */
 class Solution {
-    Integer prev = null;
+
+    Integer prev;
     boolean flag = true;
-    public boolean isValidBST(TreeNode root) 
-    {
+
+    public boolean isValidBST(TreeNode root) {
         traverse(root);
         return flag;
     }
 
-    public void traverse(TreeNode root)
-    {
-        if(root == null) return;
-        traverse(root.left);
-        if(prev == null) prev = root.val;
-        else if(prev >= root.val){
+    public void traverse(TreeNode node) {
+        if (node == null)
+            return;
+
+        traverse(node.left);
+        if (prev == null)
+            prev = node.val;
+        else if (prev >= node.val) {
             flag = false;
             return;
-        }
-        else
-        {
-            prev = root.val;
-        }
-        traverse(root.right);
+        } else
+            prev = node.val;
 
-
+        traverse(node.right);
     }
 }
