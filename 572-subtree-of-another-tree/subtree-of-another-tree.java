@@ -16,28 +16,34 @@
 class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) 
     {
-        StringBuilder str1 = new StringBuilder();
-        StringBuilder str2 = new StringBuilder();
+        if(root == null)
+            return false;
+        
+        if(isSame(root,subRoot)) return true;
 
-        traverse(root,str1);
-        traverse(subRoot,str2);
-
-        return str1.toString().contains(str2.toString());
+        return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
 
 
         
     }
 
-    public void traverse(TreeNode root,StringBuilder sb)
+    public boolean isSame(TreeNode root,TreeNode subRoot)
     {
-        if(root == null)
+        if(root == null && subRoot == null)
         {
-            sb.append("#,");
-            return;
+            return true;
+        }
+         if(root == null || subRoot == null)
+        {
+            return false;
         }
 
-        sb.append("x").append(root.val).append(",");
-        traverse(root.left,sb);
-        traverse(root.right,sb);
+        if(root.val != subRoot.val)
+        {
+            return false;
+        }
+
+        return isSame(root.left,subRoot.left) && isSame(root.right,subRoot.right);
+
     }
 }
