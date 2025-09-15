@@ -14,26 +14,27 @@
  * }
  */
 class Solution {
-    
-    int num = 0;
-    int i;
-    public int kthSmallest(TreeNode root, int k)
+    public int kthSmallest(TreeNode root, int k) 
     {
-        i = k;
-        inorder(root);
-        
-       
-        return num;
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        inorder(root,arr);
+
+        //System.out.print(arr);
+
+        return arr.get(k-1);
         
     }
 
-    public void inorder(TreeNode root)
+    public void inorder(TreeNode root,ArrayList<Integer> arr)
     {
-        if(root == null) return;
+        if(root == null)
+            return;
 
-        inorder(root.left);
-        i--;
-        if(i == 0) num = root.val;
-        inorder(root.right);
+        inorder(root.left,arr);
+        arr.add(root.val);
+        inorder(root.right,arr);
     }
+
+
 }
