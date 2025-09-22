@@ -11,15 +11,15 @@ class Solution {
 
         int max = 0;
 
-        for(int k : map.keySet())
+        for(int k : map.values())
         {
-            max = Math.max(max,map.get(k));
+            max = Math.max(max,k);
         }
 
         int sum = 0;
-        for(int k : map.keySet())
+        for(int k : map.values())
         {
-            if(map.get(k) == max)
+            if(k == max)
             {
                 sum += max;
             }
