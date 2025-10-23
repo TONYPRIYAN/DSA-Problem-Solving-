@@ -14,7 +14,7 @@ class Solution {
         {
 
         
-        if(list.size() == 0)
+        if(list.isEmpty())
         {
             ans.add(new ArrayList<>());
         }
