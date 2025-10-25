@@ -1,25 +1,17 @@
 class Solution {
     public int totalMoney(int n) 
     {
-      
-      int[] arr = {1,2,3,4,5,6,7};
-    int tot = 0;
 
-    int j = 0;
-    for(int i=n;i>0;i--)
-    {
-        if(j == arr.length)
-        {
-            j = 0;
-        }
-        tot += arr[j];
-        arr[j]++;
-        j++;
-       
-    }
+        int weeks = n/7;
+        int rem = n%7;
 
-    return tot;
-       
+        int tot = 28 * weeks +  7 * (weeks * (weeks-1))/2;
+
+        tot += rem * (2 * (weeks + 1) + (rem-1))/2;
+
+        return tot;
+
+
         
     }
 }
