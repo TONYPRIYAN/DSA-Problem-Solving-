@@ -1,15 +1,17 @@
 class Solution {
     public int smallestNumber(int n) 
     {
-        if(n == 1) return 1;
-        int k = 0;
-        int num = 2;
-        while(! (Math.pow(num,k) > n))
-        {
-            k++;
-        }
+      if(n <= 1) return n;
 
-        return (int)Math.pow(num,k)-1;
+      int pow = 1;
+      while(pow > 0 && pow <= n)
+      {
+        pow <<= 1;
+      }
+
+      if(pow <= 0) return Integer.MAX_VALUE;
+
+      return pow-1;
         
     }
 }
