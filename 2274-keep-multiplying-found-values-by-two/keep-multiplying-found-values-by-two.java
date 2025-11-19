@@ -1,21 +1,22 @@
 class Solution {
     public int findFinalValue(int[] nums, int original) 
     {
-        int num = original;
+        
         
         Set set = new HashSet<>();
 
         for(int x : nums)
         {
+            if(x >= original)
             set.add(x);
         }
 
-        while(set.contains(num))
+        while(set.contains(original))
         {
-            num*=2;
+            original*=2;
         }
 
-        return num;
+        return original;
         
     }
 }
