@@ -1,29 +1,30 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) 
     {
+        List<List<Integer>> pascal = new ArrayList<>();
 
-        List<List<Integer>> arr = new ArrayList<>();
-        arr.add(List.of(1));
-
-
-        for(int i=0;i<numRows-1;i++)
+        for(int i=0;i<numRows;i++)
         {
-            List<Integer> dummy = new ArrayList<>();
-            dummy.add(0);
-            dummy.addAll(arr.get(arr.size()-1));
-            dummy.add(0);
+            List<Integer> row = new ArrayList<>();
 
-            List<Integer> arr2 = new ArrayList<>();
-            for(int j=0;j<dummy.size()-1;j++)
+            for(int j=0;j<=i;j++)
             {
-                arr2.add(dummy.get(j)+dummy.get(j+1));
+                if(j == 0 || j == i)
+                {
+                    row.add(1);
+                }
+                else
+                {
+                    List<Integer> prev = pascal.get(i-1);
+
+                    row.add(prev.get(j) + prev.get(j-1));
+                }
             }
 
-            arr.add(arr2);
+            pascal.add(row);
         }
 
-        return arr;
-
+        return pascal;
 
 
         
