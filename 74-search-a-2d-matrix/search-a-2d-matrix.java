@@ -1,31 +1,18 @@
 class Solution {
-    public boolean searchMatrix(int[][] matrix, int target)
+    public boolean searchMatrix(int[][] matrix, int target) 
     {
-        return bt(matrix,target);
-    }
 
-    public boolean bt(int[][] matrix, int target)
-    {
-        for(int[] arr : matrix)
+        for(int i=0;i<matrix.length;i++)
         {
-           int l = 0;
-           int r = arr.length-1;
-
-           while(l <= r)
-           {
-            int mid = l + (r-l)/2;
-            if(arr[mid] == target) return true;
-
-            if(arr[mid] > target)
+            for(int j=0;j<matrix[0].length;j++)
             {
-                r = mid-1;
+                if(matrix[i][j] == target)
+                {
+                    return true;
+                }
             }
-            else
-            {
-                l = mid+1;
-            }
-           }
         }
         return false;
+        
     }
 }
