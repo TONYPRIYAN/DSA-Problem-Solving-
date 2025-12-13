@@ -24,7 +24,7 @@ public class Solution {
             else b = b.next;
         }
 
-        return b;
+        return a;
         
     }
 }
