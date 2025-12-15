@@ -1,24 +1,23 @@
 class Solution {
     public int firstUniqChar(String s) 
     {
-        Map<Character,Integer> map = new LinkedHashMap<>();
-        Set<Character> set = new HashSet<>();
+        Map<Character,Integer> map = new HashMap<>();
+
+        for(char c : s.toCharArray())
+        {
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
 
         for(int i=0;i<s.length();i++)
         {
-            if(!set.contains(s.charAt(i)))
+            char c = s.charAt(i);
+            if(map.containsKey(c) && map.get(c) == 1)
             {
-                map.put(s.charAt(i), i);
-                set.add(s.charAt(i));
+                return i;
             }
-            else
-            {
-                map.remove(s.charAt(i));
-            }
-
         }
 
-        return map.size() == 0 ? -1 : map.entrySet().iterator().next().getValue();
+        return -1;
         
     }
 }
