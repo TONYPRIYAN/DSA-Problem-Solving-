@@ -10,18 +10,22 @@
  */
 class Solution {
 
-    public ListNode reverse(ListNode node)
+    public ListNode reverse(ListNode slow)
     {
-        if(node == null || node.next == null) return node;
+        ListNode current = slow;
+        ListNode prev = null;
 
-        ListNode newhead = reverse(node.next);
+        while(current != null)
+        {
+            ListNode tmp = current.next;
+            current.next = prev;
+            prev = current;
+            current = tmp;
 
-        node.next.next = node;
-        node.next = null;
+            
+        }
 
-        
-
-        return newhead;
+        return prev;
 
     }
 
