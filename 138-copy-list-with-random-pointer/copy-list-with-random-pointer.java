@@ -16,10 +16,10 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) 
     {
-
         Map<Node,Node> map = new HashMap<>();
 
         Node tmp = head;
+
         while(tmp != null)
         {
             map.put(tmp,new Node(tmp.val));
@@ -35,6 +35,5 @@ class Solution {
         }
 
         return map.get(head);
-        
     }
 }
