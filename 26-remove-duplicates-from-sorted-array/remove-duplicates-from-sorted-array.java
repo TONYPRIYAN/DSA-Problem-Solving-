@@ -9,9 +9,10 @@ class Solution {
             if(nums[i] != nums[j])
             {
                 j++;
+                nums[j] = nums[i];
                 
             }
-            nums[j] = nums[i];
+            
 
         }
 
