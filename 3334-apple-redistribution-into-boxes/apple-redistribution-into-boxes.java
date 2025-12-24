@@ -16,21 +16,12 @@ class Solution {
 
         int cap = 0;
 
-        for(int i=n-1;i>=0;i--)
-        {
-            if(cap >= sum)
-            {
-                
-                return count;
-            }
-            
-            cap+= capacity[i];
+        for (int i = n - 1; i >= 0 && cap < sum; i--) {
+            cap += capacity[i];
             count++;
         }
 
-        if(cap >= sum) return count;
-
-        return -1;
+        return cap >= sum ? count : -1;
         
     }
 }
