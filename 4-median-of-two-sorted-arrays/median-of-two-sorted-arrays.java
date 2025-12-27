@@ -1,62 +1,31 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) 
     {
-        int m = nums1.length;
-        int n = nums2.length;
 
-        int tot = m+n;
+        List<Integer> list = new ArrayList<>();
 
-        int mi = tot/2;
-        int ni = mi - 1;
-
-        int me = -1;
-        int ne = -1;
-
-        int cnt = 0;
-        int i=0;
-        int j = 0;
-
-        while(i < m && j < n)
+        for(int x : nums1)
         {
-            if(nums1[i] < nums2[j])
-            {
-                if(cnt == mi) me = nums1[i];
-                if(cnt == ni) ne = nums1[i];
-                cnt++;
-                i++;
-            }
-            else
-            {
-                if(cnt == mi) me = nums2[j];
-                if(cnt == ni) ne = nums2[j];
-                cnt++;
-                j++;
-            }
+            list.add(x);
         }
 
-        while(i<m)
+        for(int x : nums2)
         {
-            if(cnt == mi) me = nums1[i];
-                if(cnt == ni) ne = nums1[i];
-                cnt++;
-                i++;
+            list.add(x);
         }
 
-        while(j<n)
-        {
-            if(cnt == mi) me = nums2[j];
-                if(cnt == ni) ne = nums2[j];
-                cnt++;
-                j++;
-        }
+        Collections.sort(list);
 
-        if(tot % 2 == 1)
+        int n = list.size();
+        int num = n/2;
+        if(n%2 == 1)
         {
-            return (double)me;
+            return (double) list.get(num);
         }
         else
         {
-            return (double)((double)(me+ne))/2.0;
+            double sum = list.get(num) + list.get(num-1);
+            return sum/2;
         }
         
     }
