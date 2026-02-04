@@ -1,14 +1,16 @@
 class Solution {
-    public int singleNumber(int[] nums) {
+    public int singleNumber(int[] nums) 
+    {
+        int one =0;
+        int two = 0;
 
-        Arrays.sort(nums);
-
-        for (int i = 0; i < nums.length; i += 3) {
-            if (i + 2 >= nums.length || nums[i] != nums[i + 2]) {
-                return nums[i];
-            }
+        for(int num : nums)
+        {
+            one = (one ^ num) & ~(two);
+            two = (two ^ num) & ~(one);
         }
 
-        return -1; 
+        return one;
+        
     }
 }
