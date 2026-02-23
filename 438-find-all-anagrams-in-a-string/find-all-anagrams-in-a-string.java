@@ -9,25 +9,38 @@ class Solution {
         int m = p.length();
         int n=  s.length();
 
-        int l = 0;
-        int r = m;
+        int[] freq = new int[26];
 
-        char[] arr = p.toCharArray();
-        Arrays.sort(arr);
-        String str = new String(arr);
-
-        while(r <= n)
+        for(char c : p.toCharArray())
         {
+            freq[c-'a']++;
+        }
 
-            String sub = s.substring(l,r);
-            char[] chars = sub.toCharArray();
-            Arrays.sort(chars);
-            sub = new String(chars);
+        int l = 0;
+        int r = 0;
+        int count = m;
 
-            if(str.equals(sub)) indexs.add(l);
-            l++;
+        while(r < n)
+        {
+            if(freq[s.charAt(r)-'a']-- > 0)
+            {
+                count--;
+            }
+
             r++;
+            if(count == 0)
+            {
+                indexs.add(l);
+            }
 
+            if(r-l == m)
+            {
+                if(freq[s.charAt(l)-'a']++ >= 0)
+            {
+                count++;
+            }
+            l++;
+            }
         }
 
         return indexs;
