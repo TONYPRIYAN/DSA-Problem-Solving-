@@ -14,7 +14,7 @@ class Solution {
 
             if(nums[mid] > target) r = mid-1;
 
-            if(nums[mid] < target) l = mid+1;
+            else l = mid+1;
             
         }
 
