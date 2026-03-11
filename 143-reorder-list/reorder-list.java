@@ -10,46 +10,44 @@
  */
 class Solution {
 
-    public ListNode middle(ListNode node)
+    public ListNode middle(ListNode head)
     {
 
-        ListNode f = node;
-        ListNode s = node;
+        ListNode s = head;
+        ListNode f = head;
 
         while(f != null && f.next != null)
         {
             f = f.next.next;
             s = s.next;
+            
         }
 
         return s;
-
     }
-
 
     public void reorderList(ListNode head) 
     {
 
-        //Finding mid
         ListNode mid = middle(head);
-
         ListNode head2 = mid.next;
         mid.next = null;
 
-        //Reverse the second part
+        ListNode prev = null;
+        ListNode nxt = null;
 
-        ListNode r2 = head2;
-        ListNode r2prev = null;
+        ListNode tmp = head2;
 
-        while(r2 != null)
+        while(tmp != null)
         {
-            ListNode r2next = r2.next;
-            r2.next = r2prev;
-            r2prev = r2;
-            r2 = r2next;
+            nxt = tmp.next;
+            tmp.next = prev;
+            prev = tmp;
+            tmp = nxt;
         }
 
-        head2 = r2prev;
+        head2 = prev;
+
 
         ListNode first  = head;
         ListNode second = head2;
@@ -64,7 +62,9 @@ class Solution {
 
             first = tmp1;
             second = tmp2;
+
         }
+
 
         
     }
