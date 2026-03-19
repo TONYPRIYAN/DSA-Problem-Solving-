@@ -14,33 +14,18 @@
  * }
  */
 class Solution {
-        // OPTIMISED
-
-        public int maxDepth(TreeNode root)
-        {
-            if(root == null)
-                return 0;
-            
-            return 1 + Math.max(maxDepth(root.left),maxDepth(root.right));
-        }
-
-    // public int maxDepth(TreeNode root) 
-    // {
-
-    //     return traverse(root);
+    public int maxDepth(TreeNode root) 
+    {
+        return traverse(root);
         
-    // }
+    }
 
-    // public int traverse(TreeNode root)
-    // {
-    //     if(root == null)
-    //     {
-    //         return 0;
-    //     }
 
-    //     int left = traverse(root.left);
-    //     int right = traverse(root.right);
+    public int traverse(TreeNode root)
+    {
+        if(root == null) return 0;
 
-    //     return 1 + Math.max(right,left);
-    // }
+        
+        return 1 + Math.max(traverse(root.right),traverse(root.left));
+    }
 }
