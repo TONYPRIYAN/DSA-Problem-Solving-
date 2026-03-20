@@ -16,18 +16,23 @@
 class Solution {
     public TreeNode invertTree(TreeNode root) 
     {
+        return traverse(root);
+    }
 
-        if(root == null)
-            return null;
-        
-       TreeNode tmp = root.left;
-       root.left = root.right;
-       root.right = tmp;
+    public TreeNode traverse(TreeNode node)
+    {
+        if(node == null)
+        {
+            return node;
+        }
 
-       invertTree(root.left);
-       invertTree(root.right);
+        TreeNode tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
 
-       return root;
+        traverse(node.left);
+        traverse(node.right);
 
+        return node;
     }
 }
