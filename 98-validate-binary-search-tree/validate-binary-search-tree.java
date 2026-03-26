@@ -14,28 +14,32 @@
  * }
  */
 class Solution {
+    public boolean isValidBST(TreeNode root) 
+    {
+        ArrayList<Integer> list = new ArrayList<>();
 
-    Integer prev;
-    boolean flag = true;
+        traverse(root,list);
 
-    public boolean isValidBST(TreeNode root) {
-        traverse(root);
-        return flag;
+        for(int i=1;i<list.size();i++)
+        {
+            if(list.get(i) <= list.get(i-1))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    public void traverse(TreeNode node) {
-        if (node == null)
-            return;
 
-        traverse(node.left);
-        if (prev == null)
-            prev = node.val;
-        else if (prev >= node.val) {
-            flag = false;
-            return;
-        } else
-            prev = node.val;
+    public void traverse(TreeNode root,ArrayList<Integer> list)
+    {
+        if(root == null) return;
 
-        traverse(node.right);
+        traverse(root.left,list);
+        list.add(root.val);
+        traverse(root.right,list);
     }
+
+
 }
