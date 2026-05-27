@@ -17,23 +17,21 @@ class Solution {
     public int diameterOfBinaryTree(TreeNode root) 
     {
         int[] max = new int[1];
-
         traverse(root,max);
-
         return max[0];
         
     }
 
-    public int traverse(TreeNode node,int[] max)
+    public int traverse(TreeNode root,int[] max)
     {
-        if(node == null) return 0;
+        if(root == null) return 0;
 
-        int lh = traverse(node.left,max);
-        int rh = traverse(node.right,max);
+        int lh = traverse(root.left,max);
+        int rh = traverse(root.right,max);
 
         max[0] = Math.max(max[0],lh+rh);
 
-        return 1+Math.max(lh,rh);
+        return 1+ Math.max(lh,rh);
 
     }
 }
