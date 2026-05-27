@@ -14,19 +14,32 @@
  * }
  */
 class Solution {
-    public boolean isBalanced(TreeNode root) {
-        int[] result = dfs(root);
-        return result[0] == 1;        
+    public boolean isBalanced(TreeNode root) 
+    {
+
+        return traverse(root) != -1;
     }
 
-    private int[] dfs(TreeNode node) {
-        if (node == null) return new int[]{1, 0}; // {isBalanced (1 for true, 0 for false), height}
-        
-        int[] left = dfs(node.left);
-        int[] right = dfs(node.right);
-        
-        boolean isBalanced = left[0] == 1 && right[0] == 1 && Math.abs(left[1] - right[1]) <= 1;
-        
-        return new int[]{isBalanced ? 1 : 0, 1 + Math.max(left[1], right[1])};
-    }    
+    public int traverse(TreeNode root)
+    {
+        if(root == null) return 0;
+
+        int lh = traverse(root.left);
+
+
+        if(lh == -1) return -1;
+
+        int rh = traverse(root.right);
+
+
+        if(rh == -1) return -1;
+
+        if(Math.abs(lh-rh) > 1) return -1;
+
+
+        return 1+ Math.max(lh,rh);
+
+
+
+    }
 }
