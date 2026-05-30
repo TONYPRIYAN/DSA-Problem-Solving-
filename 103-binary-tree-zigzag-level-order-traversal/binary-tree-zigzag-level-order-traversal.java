@@ -18,37 +18,41 @@ class Solution {
     {
         List<List<Integer>> arr = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
-        boolean ltr = true;
+        boolean flag = true;
 
         if(root == null) return arr;
 
         queue.offer(root);
 
+
         while(!queue.isEmpty())
         {
-            List<Integer> arr2 = new LinkedList<>();
-            int lvl = queue.size();
+            List<Integer> list = new ArrayList<>();
             
-            for(int i = 0;i<lvl;i++)
-            {
-                TreeNode node = queue.poll();
-                if(ltr)
-                {
-                    arr2.addLast(node.val);
-                }
-                else
-                {
-                    arr2.addFirst(node.val);
-                }
 
-                if(node.left != null) queue.offer(node.left);
-                if(node.right != null) queue.offer(node.right);
-                
-                
+            int n = queue.size();
+
+            for(int i=0;i<n;i++)
+            {
+            TreeNode node = queue.poll();
+
+            if(flag)
+            {
+                list.addLast(node.val);
+            }
+            else
+            {
+                list.addFirst(node.val);
             }
 
-            arr.add(arr2);
-            ltr = !ltr;
+            if(node.left != null) queue.offer(node.left);
+            if(node.right != null) queue.offer(node.right);
+
+            }
+
+            arr.add(list);
+            flag = !flag;
+
         }
 
         return arr;
