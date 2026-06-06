@@ -1,36 +1,22 @@
 class Solution {
-    public int majorityElement(int[] nums) 
-    {
-
+    public int majorityElement(int[] nums) {
+        int ele = -1;
         int cnt = 0;
-        int ele = 0;
 
-        for(int x : nums)
-        {
-            if(cnt == 0)
-            {
-                cnt = 1;
+        for (int x : nums) {
+
+            if (cnt == 0) {
                 ele = x;
-            }
-            else if(x == ele)
-            {
                 cnt++;
-            }
-            else
-            {
+            } else if (ele == x) {
+                cnt++;
+            } else {
                 cnt--;
             }
+
         }
 
-        cnt = 0;
-        for(int x : nums)
-        {
-            if(x == ele) cnt++;
-        }
+        return ele;
 
-        if(cnt > (nums.length)/2) return ele;
-
-        return -1;
-        
     }
 }
