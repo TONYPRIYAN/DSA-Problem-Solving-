@@ -8,14 +8,15 @@ class Solution {
             while(strs[i].indexOf(pre) != 0)
             {
                 pre = pre.substring(0,pre.length()-1);
-                if(pre.isEmpty())
+                if(pre == null)
                 {
                     return "";
                 }
             }
+
         }
 
         return pre;
-
+        
     }
 }
