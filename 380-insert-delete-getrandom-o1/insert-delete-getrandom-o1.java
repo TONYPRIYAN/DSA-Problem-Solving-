@@ -1,12 +1,12 @@
 class RandomizedSet {
 
+    Random rand;
     HashMap<Integer,Integer> map;
     ArrayList<Integer> arr;
-    java.util.Random rand =  new java.util.Random();
 
-    
     public RandomizedSet() 
     {
+        rand = new Random();
         map = new HashMap<>();
         arr = new ArrayList<>();
         
@@ -14,39 +14,42 @@ class RandomizedSet {
     
     public boolean insert(int val) 
     {
-        boolean chk = map.containsKey(val);
-        if (chk) return false;
+        if(map.containsKey(val))
+        {
+            return false;
+        }
 
         map.put(val,arr.size());
         arr.add(val);
         return true;
         
-        
     }
     
     public boolean remove(int val) 
     {
-        boolean chk = map.containsKey(val);
-        if (!chk) return false;
+        if(!map.containsKey(val))
+        {
+            return false;
+        }
 
         int idx = map.get(val);
-        if(idx < arr.size() -1)
+        if(idx < arr.size()-1)
         {
-            int idx2 = arr.get(arr.size()-1);
-            arr.set(idx,idx2);
-            map.put(idx2,idx);
-            
+            int ele = arr.get(arr.size()-1);
+            arr.set(idx,ele);
+            map.put(ele,idx);
         }
+
         map.remove(val);
         arr.remove(arr.size()-1);
         return true;
-
         
     }
     
     public int getRandom() 
     {
-        return arr.get(rand.nextInt(arr.size()) );
+        return arr.get(rand.nextInt(arr.size()));
+        
     }
 }
 
