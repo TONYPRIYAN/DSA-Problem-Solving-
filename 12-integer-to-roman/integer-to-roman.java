@@ -1,21 +1,29 @@
 class Solution {
     public String intToRoman(int num) 
     {
-
-        String[] M = {"","M","MM","MMM"};
-        String[] C = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
-        String[] X = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
-        String[] I = {"","I","II","III","IV","V","VI","VII","VIII","IX"};
+        int[] N = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
+        String[] R = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
 
 
-        return
-            M[num/1000] +
-            C[(num%1000)/100] +
-            X[(num%100)/10] +
-            I[num%10];
+        String str = "";
+        int i = 0;
 
+        while(num > 0)
+        {
+            if(num >= N[i])
+            {
+                str += R[i];
+                num -= N[i];
 
+            }
+            else
+            {
+                i++;
+            }
 
+        }
+
+        return str;
         
     }
 }
