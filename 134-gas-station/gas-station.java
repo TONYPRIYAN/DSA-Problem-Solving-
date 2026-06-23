@@ -3,32 +3,29 @@ class Solution {
     {
         int gassum = 0;
         int costsum = 0;
+        int n = gas.length;
 
-        for(int i=0;i<gas.length;i++)
+        for(int i=0;i<n;i++)
         {
-            gassum+=gas[i];
-            costsum+=cost[i];
+            gassum +=gas[i];
+            costsum += cost[i];
             gas[i] = gas[i]-cost[i];
         }
 
-        if(gassum < costsum)
-        {
-            return -1;
-        }
-       
-       int tot = 0;
-       int start = 0;
-        for(int i=0;i<gas.length;i++)
+        if(gassum < costsum) return -1;
+
+        int tot = 0;
+        int start = 0;
+        for(int i=0;i<n;i++)
         {
             tot += gas[i];
             if(tot < 0)
             {
                 tot = 0;
-                start = i+1;
-
+                start  = i+1;
             }
-            
         }
+
         return start;
         
     }
