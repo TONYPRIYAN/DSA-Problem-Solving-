@@ -1,13 +1,15 @@
 class Solution {
-    public int compress(char[] chars) 
-    {
+    public int compress(char[] chars)
+     {
+
         int ans = 0;
         int i = 0;
+
         while(i < chars.length)
         {
-            char c  = chars[i];
+            char c = chars[i];
             int count = 0;
-            while(i < chars.length && chars[i] == c)
+            while(i < chars.length && c == chars[i])
             {
                 count++;
                 i++;
