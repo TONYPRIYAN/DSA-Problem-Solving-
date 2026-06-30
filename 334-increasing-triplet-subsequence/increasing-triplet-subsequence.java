@@ -1,18 +1,18 @@
 class Solution {
-    public boolean increasingTriplet(int[] nums)
+    public boolean increasingTriplet(int[] nums) 
     {
-        int l = Integer.MAX_VALUE;
+        int l  = Integer.MAX_VALUE;
         int r = Integer.MAX_VALUE;
 
-        for(int num : nums)
+        for(int n : nums)
         {
-            if(num <= l)
+            if(n <= l)
             {
-                l = num;
+                l = n;
             }
-            else if(num <= r)
+            else if(n <= r)
             {
-                r = num;
+                r = n;
             }
             else
             {
