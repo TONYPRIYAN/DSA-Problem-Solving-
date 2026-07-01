@@ -2,35 +2,35 @@ class Solution {
     public int candy(int[] ratings) 
     {
 
-        int[] candies = new int[ratings.length];
+        int n = ratings.length;
 
-        Arrays.fill(candies,1);
+        int[] arr = new int[n];
 
-        for(int i=1;i<ratings.length;i++)
+        Arrays.fill(arr,1);
+
+        for(int i=1;i<n;i++)
         {
-            if(ratings[i]>ratings[i-1])
+            if(ratings[i] > ratings[i-1])
             {
-                candies[i] = candies[i-1]+1;
+                arr[i] = arr[i-1]+1;
             }
         }
 
-        for(int i=ratings.length-2;i>=0;i--)
+        int tot = 0;
+        for(int i=n-2;i>=0;i--)
         {
-            if(ratings[i]>ratings[i+1] && candies[i] <= candies[i+1])
+            if(ratings[i] > ratings[i+1] && arr[i] <= arr[i+1])
             {
-                candies[i] = candies[i+1]+1;
+                arr[i] = arr[i+1]+1;
             }
+            tot += arr[i];
+
         }
 
-        int sum = 0;
+        return tot+arr[n-1];
 
-        for(int x : candies)
-        {
-            sum +=x;
-        }
+        
 
-
-        return sum;
         
     }
 }
